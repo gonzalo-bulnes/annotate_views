@@ -5,16 +5,15 @@ Provides information about variables used in Rails views as code comments.
 
     As a developer
     In order to avoid integration issues when renaming variables in views
-    I want the presence of those variables to be properly tested with
-    views and controllers specs
+    I want the presence of those variables to be properly tested with views and controllers specs
 
 The issue
 ---------
 
-Sometimes, the application growth requires several partials to be shared between views, or views to be shared among several controller actions. The first case often requires to unify variable names (e.g. `@anonymous_user` and `@user` could be renamed `@user` in order to make possible the rendering of the `_anonymous_something.html.erb` and `_something.html.erb` partials into the `something/show.html.erb` view).
+Sometimes, the application growth requires several partials to be shared between views, or views to be shared among several controllers actions. The first case often requires to unify variable names (e.g. `@anonymous_user` and `@user` could be renamed `@user` in order to make possible the rendering of the `_anonymous_something.html.erb` and `_something.html.erb` partials into the `something/show.html.erb` view).
 
 Variables renaming **must** be performed with caution (read _a proper integration tests suite_).
-Such a tests suite may be difficult to maintain when views get larger, the purpose of this gem
+Such a tests suite may be difficult to maintain when views get larger. The purpose of this gem
 is to generate useful information and, at your convenience, useful code to get that task done.
 
 The tasks
@@ -64,6 +63,22 @@ rails generate annotate_views:views:specs --only-suggestions
 ```
 
 Run `rails generate annotate_views --help` for more options.
+
+Getting started
+---------------
+
+Add Annotate Views to your `Gemfile`:
+
+```ruby
+group :development do
+  gem 'annotate_views', git: git@github.com:gonzalo-bulnes/annotate_views.git
+end
+```
+
+Run `bundle install`. That's all! Let's annotate:
+
+  rake annotate:views:all
+
 
 Roadmap
 -------
